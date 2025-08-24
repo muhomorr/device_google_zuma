@@ -71,8 +71,6 @@ PRODUCT_SET_DEBUGFS_RESTRICTIONS := false
 # Disable Bluetooth as default in factory build
 DEVICE_PACKAGE_OVERLAYS += device/google/zuma/overlay-factory
 
-BOARD_SEPOLICY_DIRS += hardware/google/pixel-sepolicy/factory_boost
-
 # Add factory-friendly changes
 PRODUCT_PACKAGES += \
         FactoryOverlaySettings \

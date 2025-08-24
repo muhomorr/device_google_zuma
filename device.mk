@@ -184,21 +184,8 @@ PRODUCT_VENDOR_PROPERTIES += ro.surface_flinger.prime_shader_cache.ultrahdr=1
 # GRAPHICS - GPU (end)
 # ####################
 
-# Device Manifest, Device Compatibility Matrix for Treble
-DEVICE_MANIFEST_FILE := \
-	device/google/zuma/manifest.xml
-
 BOARD_USE_CODEC2_AIDL := V1
-ifneq (,$(filter aosp_%,$(TARGET_PRODUCT)))
-DEVICE_MANIFEST_FILE += \
-	device/google/zuma/manifest_media_aosp.xml
-else
-DEVICE_MANIFEST_FILE += \
-	device/google/zuma/manifest_media.xml
-endif
 
-DEVICE_MATRIX_FILE := \
-    device/google/zuma/compatibility_matrix.xml
 
 PRODUCT_PACKAGES += GosOverlay GosSettingsOverlay
 
@@ -580,7 +567,7 @@ include hardware/google/pixel/common/pixel-common-device.mk
 ifneq ($(BOARD_WITHOUT_RADIO),true)
 include hardware/google/pixel/PixelLogger/PixelLogger.mk
 else
-BOARD_SEPOLICY_DIRS += hardware/google/pixel-sepolicy/logger_app
+
 endif
 
 # RadioExt Version
@@ -591,11 +578,6 @@ include hardware/google/pixel/wifi_ext/device.mk
 
 # Battery Stats Viewer
 PRODUCT_PACKAGES_DEBUG += BatteryStatsViewer
-
-# Install product specific framework compatibility matrix
-# (TODO: b/169535506) This includes the FCM for system_ext and product partition.
-# It must be split into the FCM of each partition.
-DEVICE_PRODUCT_COMPATIBILITY_MATRIX_FILE += device/google/zuma/device_framework_matrix_product.xml
 
 # Keymint configuration
 PRODUCT_COPY_FILES += \
